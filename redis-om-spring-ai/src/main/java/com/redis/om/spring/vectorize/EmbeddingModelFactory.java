@@ -16,7 +16,8 @@ import org.springframework.ai.document.MetadataMode;
 import org.springframework.ai.model.ModelOptionsUtils;
 import org.springframework.ai.ollama.OllamaEmbeddingModel;
 import org.springframework.ai.ollama.api.OllamaApi;
-import org.springframework.ai.ollama.api.OllamaOptions;
+import org.springframework.ai.ollama.api.OllamaChatOptions;
+import org.springframework.ai.ollama.api.OllamaEmbeddingOptions;
 import org.springframework.ai.openai.OpenAiEmbeddingModel;
 import org.springframework.ai.openai.OpenAiEmbeddingOptions;
 import org.springframework.ai.openai.api.OpenAiApi;
@@ -400,7 +401,7 @@ public class EmbeddingModelFactory {
     OllamaApi api = OllamaApi.builder().baseUrl(properties.getOllama().getBaseUrl()).restClientBuilder(
         restClientBuilder).webClientBuilder(webClientBuilder).responseErrorHandler(responseErrorHandler).build();
 
-    OllamaOptions options = OllamaOptions.builder().model(model).truncate(false).build();
+    OllamaEmbeddingOptions options = OllamaEmbeddingOptions.builder().model(model).truncate(false).build();
 
     OllamaEmbeddingModel embeddingModel = OllamaEmbeddingModel.builder().ollamaApi(api).defaultOptions(options).build();
 
